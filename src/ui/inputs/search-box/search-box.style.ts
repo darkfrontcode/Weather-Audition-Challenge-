@@ -52,10 +52,16 @@ export const Button = styled.button`
   cursor: pointer;
   transition: ease all .15s;
 
-  :focus, :hover {
+  :focus:not(:disabled),
+  :hover:not(:disabled) {
     outline: none;
     box-shadow: 0px 0px 14px 4px rgba(235, 31, 52, 0.5);
     border-color: ${COLORS.RED.ALIZARIN_CRIMSON};
     line-height: ${SIZES.LARGE * 2 + SIZES.SMALL}px;
+  }
+
+  :disabled {
+    opacity: 0.5;
+    cursor: default;
   }
 `;

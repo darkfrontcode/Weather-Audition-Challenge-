@@ -1,27 +1,25 @@
-import { SyntheticEvent, useState } from 'react';
+import { SyntheticEvent, useState, useEffect } from 'react';
+import { AddressSchema, IAddress } from '../../../interfaces';
+
+const INITIAL_STATE = {
+  street: '',
+  number: '',
+  city: '',
+  state: '',
+  zipCode: '',
+};
 
 export interface IFormOutput {
-  state: {
-    street: string;
-    number: string;
-    city: string;
-    state: string;
-    zipCode: string;
-  };
+  state: IAddress;
   tools: {
     change: (event: SyntheticEvent) => void;
-    validate: () => void;
+    invalid: boolean;
   };
 }
 
 export const useForm = (): IFormOutput => {
-  const [state, setState] = useState({
-    street: '',
-    number: '',
-    city: '',
-    state: '',
-    zipCode: '',
-  });
+  const [state, setState] = useState<IAddress>(INITIAL_STATE);
+  const [invalid, setInvalid] = useState<boolean>(true);
 
   const change = (event: SyntheticEvent) => {
     const target = event.target as HTMLInputElement;
@@ -31,10 +29,20 @@ export const useForm = (): IFormOutput => {
     setState((prev) => ({ ...prev, ...next }));
   };
 
-  // TODO:
-  const validate = () => {};
+  const validate = async () => {
+    try {
+      await AddressSchema.validate(state);
+      setInvalid(false);
+    } catch (error) {
+      setInvalid(true);
+    }
+  };
 
-  const tools = { change, validate };
+  useEffect(() => {
+    validate();
+  }, [state]);
+
+  const tools = { change, invalid };
 
   return { state, tools };
 };

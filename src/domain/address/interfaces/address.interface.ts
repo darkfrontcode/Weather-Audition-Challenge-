@@ -1,8 +1,8 @@
 import { object, string, number, InferType } from 'yup';
 
-export const schema = object({
+export const AddressSchema = object({
   street: string().required(),
-  number: number().required(),
+  number: string().required(),
   city: string()
     .nullable()
     .default(() => String()),
@@ -14,4 +14,4 @@ export const schema = object({
     .default(() => String()),
 });
 
-export interface IAddress extends InferType<typeof schema> {}
+export interface IAddress extends InferType<typeof AddressSchema> {}

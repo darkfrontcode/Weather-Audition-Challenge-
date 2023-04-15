@@ -17,15 +17,23 @@ import {
   FullAddressSearchInput,
 } from './form.style';
 import { useForm } from './hooks';
+import { useFullAddress } from './hooks/full-address.hook';
 
 export const AddressForm = (): JSX.Element => {
   // TODO: Fix this
-  const [fullAddress, setFullAddress] = useState<string>('');
+  const fullAddress = useFullAddress();
   const form = useForm();
 
   return (
     <Container>
-      <Form autoComplete="off">
+      <Form
+        autoComplete="off"
+        onSubmit={(event) => {
+          // TODO:
+          event.preventDefault();
+          console.log('Sent!');
+        }}
+      >
         <Heading>Type a full address:</Heading>
         <FullAddressSearchInput
           input={{
@@ -34,12 +42,13 @@ export const AddressForm = (): JSX.Element => {
             type: 'text',
             name: 'fullAddress',
             placeholder: 'Full Address',
-            value: fullAddress,
-            onChange: (value) => setFullAddress(value.target.value),
+            value: fullAddress.state,
+            onChange: fullAddress.tools.change,
             autoComplete: 'off',
           }}
           button={{
             children: 'Ok',
+            disabled: fullAddress.tools.invalid,
           }}
         />
         <Divider>
@@ -94,7 +103,7 @@ export const AddressForm = (): JSX.Element => {
             onChange={form.tools.change}
           />
         </Grid>
-        <SubmitButton>Submit</SubmitButton>
+        <SubmitButton disabled={form.tools.invalid}>Submit</SubmitButton>
       </Form>
     </Container>
   );
