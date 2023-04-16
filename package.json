@@ -35,7 +35,9 @@
         "tsconfig": "tsconfig.json"
       }
     },
-    "setupFilesAfterEnv": ["<rootDir>/jest.setup.ts"],
+    "setupFilesAfterEnv": [
+      "<rootDir>/jest.setup.ts"
+    ],
     "transform": {
       "^.+\\.(ts|tsx)$": "ts-jest"
     },
