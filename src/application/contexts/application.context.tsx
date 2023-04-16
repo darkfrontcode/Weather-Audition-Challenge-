@@ -1,12 +1,9 @@
 import React, { createContext, ReactChildren, ReactChild } from 'react';
-import { IPeriod, useWeather } from '../../domain';
-
+import { IPeriod, IWeatherOutput, useWeather } from '../../domain';
 import { ITimelineOutput, useTimeline } from '../hooks';
 
 export interface IApplicationContext extends ITimelineOutput {
-  weather: {
-    forecast: IPeriod[];
-  };
+  weather: IWeatherOutput;
 }
 
 export interface IApplicationContextProps {

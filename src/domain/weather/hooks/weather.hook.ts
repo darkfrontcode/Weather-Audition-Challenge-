@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import { IPeriod } from '../interfaces';
 
-export interface IWeather {
+export interface IWeatherOutput {
   forecast: IPeriod[];
   change: (next: IPeriod[]) => void;
 }
 
-export const useWeather = () => {
+export const useWeather = (): IWeatherOutput => {
   const [forecast, setForecast] = useState<IPeriod[]>([]);
-  const change = (next: IPeriod[]) => setForecast(next);
+  const change = (grid: IPeriod[]) => setForecast(grid);
 
   return { forecast, change };
 };

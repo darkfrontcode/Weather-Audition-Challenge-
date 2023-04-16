@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { GeolocationService, IPeriod, WeatherService } from '../../domain';
+import { GeolocationService, WeatherService } from '../../domain';
 import { Scene } from '../enums';
 import { useApplicationContext } from './application-context.hook';
 
@@ -10,45 +9,41 @@ export interface IApplicationOutput {
       byAddressFields: () => void;
     };
   };
-  response: {
-    forecast: IPeriod[];
-  };
 }
 
 export const useApplication = (): IApplicationOutput => {
-  const application = useApplicationContext();
-  const [forecast, setForecast] = useState<IPeriod[]>([]);
+  const app = useApplicationContext();
 
   const byOneLineAddress = async (address: string): Promise<void> => {
-    application.goToScene(Scene.FETCHING);
+    app.controls.go(Scene.FETCHING);
 
     const geolocation = await GeolocationService.get.byOneLineAddress(address);
 
     if (!geolocation.ok) {
-      return application.goToScene(Scene.ERROR);
+      return app.controls.go(Scene.ERROR);
     }
 
     if (!geolocation.data) {
-      return application.goToScene(Scene.NOT_FOUND);
+      return app.controls.go(Scene.NOT_FOUND);
     }
 
     const { y, x } = geolocation.data;
     const points = await WeatherService.get.byPoints(y, x);
 
     if (!points.ok) {
-      return application.goToScene(Scene.ERROR);
+      return app.controls.go(Scene.ERROR);
     }
 
     const { gridId, gridX, gridY } = points.data;
     const grid = await WeatherService.get.byGridPoints(gridId, gridX, gridY);
 
     if (!grid.ok) {
-      return application.goToScene(Scene.ERROR);
+      return app.controls.go(Scene.ERROR);
     }
 
-    setForecast(grid);
+    app.weather.change(grid);
 
-    return application.goToScene(Scene.DISPLAY);
+    return app.controls.go(Scene.DISPLAY);
   };
 
   // TODO:
@@ -60,9 +55,6 @@ export const useApplication = (): IApplicationOutput => {
         byOneLineAddress,
         byAddressFields,
       },
-    },
-    response: {
-      forecast,
     },
   };
 };

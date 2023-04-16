@@ -4,9 +4,9 @@ import { Greetings, Fetching, Error, NotFound } from '../scenes';
 import { Container } from './channel.style';
 
 export const WeatherChannel = () => {
-  const { movie } = useApplicationContext();
+  const { timeline } = useApplicationContext();
 
-  const timeline = {
+  const roadmap = {
     [Scene.GREETINGS]: () => <Greetings />,
     [Scene.FETCHING]: () => <Fetching />,
     [Scene.DISPLAY]: () => <h3>Displaying some data 0/</h3>,
@@ -14,7 +14,7 @@ export const WeatherChannel = () => {
     [Scene.ERROR]: () => <Error />,
   };
 
-  const play = timeline[movie.scene.current]();
+  const play = roadmap[timeline.scene.current]();
 
   return <Container>{play}</Container>;
 };
