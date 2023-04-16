@@ -41,7 +41,8 @@ export const useApplication = (): IApplicationOutput => {
       return app.controls.go(Scene.ERROR);
     }
 
-    app.weather.change(grid);
+    app.address.oneline.change(address);
+    app.weather.change(grid.data);
 
     return app.controls.go(Scene.DISPLAY);
   };

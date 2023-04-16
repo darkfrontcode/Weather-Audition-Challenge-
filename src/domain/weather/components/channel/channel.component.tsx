@@ -1,6 +1,6 @@
 import React from 'react';
 import { Scene, useApplicationContext } from '../../../../application';
-import { Greetings, Fetching, Error, NotFound } from '../scenes';
+import { Greetings, Fetching, Error, NotFound, Display } from '../scenes';
 import { Container } from './channel.style';
 
 export const WeatherChannel = () => {
@@ -9,7 +9,7 @@ export const WeatherChannel = () => {
   const roadmap = {
     [Scene.GREETINGS]: () => <Greetings />,
     [Scene.FETCHING]: () => <Fetching />,
-    [Scene.DISPLAY]: () => <h3>Displaying some data 0/</h3>,
+    [Scene.DISPLAY]: () => <Display />,
     [Scene.NOT_FOUND]: () => <NotFound />,
     [Scene.ERROR]: () => <Error />,
   };
