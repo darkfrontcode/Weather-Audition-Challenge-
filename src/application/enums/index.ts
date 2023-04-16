@@ -1,1 +1,1 @@
-export { Scenes } from './scenes.enum';
+export { Scene } from './scene.enum';

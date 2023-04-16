@@ -1,1 +1,1 @@
-export { MovieReducer } from './movie.reducer';
+export { TimelineReducer } from './timeline.reducer';

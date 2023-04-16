@@ -1,3 +1,3 @@
 export type { IReducerAction } from './reducer-action.interface';
-export type { IMovieAction } from './movie-action.interface';
-export type { IMovie } from './movie.interface';
+export type { ITimelineAction } from './timeline-action.interface';
+export type { ITimeline } from './timeline.interface';

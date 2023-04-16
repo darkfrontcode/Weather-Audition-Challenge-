@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { GeolocationService, IPeriod, WeatherService } from '../../domain';
-import { Scenes } from '../enums';
+import { Scene } from '../enums';
 import { useApplicationContext } from './application-context.hook';
 
 export interface IApplicationOutput {
@@ -20,35 +20,35 @@ export const useApplication = (): IApplicationOutput => {
   const [forecast, setForecast] = useState<IPeriod[]>([]);
 
   const byOneLineAddress = async (address: string): Promise<void> => {
-    application.goToScene(Scenes.FETCHING);
+    application.goToScene(Scene.FETCHING);
 
     const geolocation = await GeolocationService.get.byOneLineAddress(address);
 
     if (!geolocation.ok) {
-      return application.goToScene(Scenes.ERROR);
+      return application.goToScene(Scene.ERROR);
     }
 
     if (!geolocation.data) {
-      return application.goToScene(Scenes.NOT_FOUND);
+      return application.goToScene(Scene.NOT_FOUND);
     }
 
     const { y, x } = geolocation.data;
     const points = await WeatherService.get.byPoints(y, x);
 
     if (!points.ok) {
-      return application.goToScene(Scenes.ERROR);
+      return application.goToScene(Scene.ERROR);
     }
 
     const { gridId, gridX, gridY } = points.data;
     const grid = await WeatherService.get.byGridPoints(gridId, gridX, gridY);
 
     if (!grid.ok) {
-      return application.goToScene(Scenes.ERROR);
+      return application.goToScene(Scene.ERROR);
     }
 
     setForecast(grid);
 
-    return application.goToScene(Scenes.DISPLAY);
+    return application.goToScene(Scene.DISPLAY);
   };
 
   // TODO:

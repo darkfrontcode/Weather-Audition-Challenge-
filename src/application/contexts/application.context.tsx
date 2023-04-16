@@ -1,8 +1,10 @@
 import React, { createContext, ReactChildren, ReactChild } from 'react';
 
-import { IMovieiOutput, useMovie } from '../hooks';
+import { ITimelineOutput, useTimeline } from '../hooks';
 
-export interface IApplicationContext extends IMovieiOutput {}
+export interface IApplicationContext extends ITimelineOutput {
+  weather: {};
+}
 
 export interface IApplicationContextProps {
   children: ReactChild | ReactChildren;
@@ -11,10 +13,10 @@ export interface IApplicationContextProps {
 export const ApplicationContext = createContext<IApplicationContext>();
 
 export const ApplicationProvider = ({ children }: IApplicationContextProps) => {
-  const movie = useMovie();
+  const timeline = useTimeline();
 
   return (
-    <ApplicationContext.Provider value={{ ...movie }}>
+    <ApplicationContext.Provider value={{ ...timeline }}>
       {children}
     </ApplicationContext.Provider>
   );

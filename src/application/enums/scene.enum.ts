@@ -1,4 +1,4 @@
-export enum Scenes {
+export enum Scene {
   GREETINGS = '@scene/greetings',
   FETCHING = '@scene/fetching',
   DISPLAY = '@scene/display',
