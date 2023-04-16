@@ -26,7 +26,9 @@ export const AddressForm = (): JSX.Element => {
 
   return (
     <Container>
-      <p>{JSON.stringify(geolocation.response.coordinates)}</p>
+      <p style={{ color: 'white' }}>
+        {JSON.stringify(geolocation.response.coordinates)}
+      </p>
       <Form
         autoComplete="off"
         onSubmit={async (event) => {
