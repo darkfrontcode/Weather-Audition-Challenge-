@@ -26,13 +26,13 @@ export const AddressForm = (): JSX.Element => {
 
   return (
     <Container>
+      <p>{JSON.stringify(geolocation.response.coordinates)}</p>
       <Form
         autoComplete="off"
-        onSubmit={(event) => {
+        onSubmit={async (event) => {
           // TODO:
           event.preventDefault();
           geolocation.get.byOneLineAddress();
-          console.log('Sent!');
         }}
       >
         <Heading>Type a full address:</Heading>
