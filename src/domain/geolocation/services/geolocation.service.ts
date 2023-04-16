@@ -20,20 +20,18 @@ const byOneLineAddress = async (
       response.status === 200 &&
       response.data.result.addressMatches.length > 0
     ) {
-      const ok = true;
-      const data = response.data.result.addressMatches[0].coordinates;
-
-      console.log(data);
-
-      return ServiceResponse({ ok, data });
+      return ServiceResponse({
+        ok: true,
+        data: response.data.result.addressMatches[0].coordinates,
+      });
     }
 
     throw new Error('No address matches');
   } catch (err) {
-    const ok = false;
-    const data = null;
-
-    return ServiceResponse({ ok, data });
+    return ServiceResponse<null>({
+      ok: false,
+      data: null,
+    });
   }
 };
 
