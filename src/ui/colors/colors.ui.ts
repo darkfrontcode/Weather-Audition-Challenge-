@@ -5,6 +5,8 @@ export const COLORS = {
   GRAY: {
     GAINSBORO: '#DCDCDC',
     LIGHT_SLATE: '#798f9d',
+    GEYSER: '#DFE6E9',
+    CATSKILL: '#EAF1F5',
   },
   RED: {
     ALIZARIN_CRIMSON: '#EB1F34',

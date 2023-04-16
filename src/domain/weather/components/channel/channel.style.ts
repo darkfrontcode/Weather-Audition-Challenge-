@@ -1,15 +1,10 @@
 import styled from 'styled-components';
-import {
-  COLORS,
-  FONTS,
-  PERCENTAGE,
-  SearchBoxInput,
-  SimpleButton,
-  SIZES,
-} from '../../../../ui';
+import { COLORS, PERCENTAGE, SIZES } from '../../../../ui';
 
 /* =======================================
   - Structure
 ======================================= */
 
-export const Container = styled.section``;
+export const Container = styled.section`
+  height: ${PERCENTAGE.FULL}%;
+`;

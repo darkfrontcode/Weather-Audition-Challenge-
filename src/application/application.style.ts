@@ -7,7 +7,7 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.section`
-  background-color: white;
+  background-color: ${COLORS.GRAY.CATSKILL};
   flex-grow: 1;
 `;
 
