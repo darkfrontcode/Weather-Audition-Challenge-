@@ -10,10 +10,8 @@ const PLAY_MOVIE: IMovie = {
 };
 
 export interface IMovieiOutput {
-  movie: {
-    scene: {
-      current: Scenes;
-    };
+  scene: {
+    current: Scenes;
   };
   goToScene: (scene: Scenes) => void;
 }
