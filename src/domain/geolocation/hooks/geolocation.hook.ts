@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useApplication, Scenes } from '../../../application';
 import { ICoordinates } from '../interfaces';
 import { geolocationService } from '../services';
 
@@ -19,12 +20,15 @@ export interface IGeolocationOutput {
 }
 
 export const useGeolocation = (): IGeolocationOutput => {
+  const application = useApplication();
   const [coordinates, setCoordinates] =
     useState<ICoordinates>(INITIAL_COORDINATES);
 
   const byOneLineAddress = async (
     address: string = '4600+silver+hill+rd%2C+20233'
   ): Promise<void> => {
+    application.goToScene(Scenes.FETCHING);
+
     const response = await geolocationService.get.byOneLineAddress(address);
 
     if (response.ok) {
@@ -36,9 +40,11 @@ export const useGeolocation = (): IGeolocationOutput => {
         available: true,
       });
 
+      application.goToScene(Scenes.DISPLAY);
       return;
     }
 
+    application.goToScene(Scenes.ERROR);
     setCoordinates(INITIAL_COORDINATES);
   };
 

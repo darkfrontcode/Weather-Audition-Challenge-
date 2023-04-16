@@ -8,21 +8,21 @@ export const Container = styled.section`
   display: flex;
 `;
 
-export const RaisedHands = styled.span`
+export const Disappointed = styled.span`
   font-size: ${SIZES.EXTRA_LARGE * 2}px;
   text-align: center;
-  margin: 0 0 ${SIZES.LARGE + SIZES.MEDIUM}px 0;
+  margin: 0 0 ${SIZES.EXTRA_LARGE}px 0;
   padding: 0;
 `;
 
 export const Heading = styled.h2`
-font-family: ${FONTS.DONGLE}, cursive;
-font-size: ${SIZES.EXTRA_LARGE * 2}px;
-color: ${COLORS.BLUE.RICH};
-text-align: center;
-line-height: 80px;
-margin: 0;
-padding: 0;
+  font-family: ${FONTS.DONGLE}, cursive;
+  font-size: ${SIZES.EXTRA_LARGE * 2}px;
+  color: ${COLORS.BLUE.RICH};
+  text-align: center;
+  line-height: 80px;
+  margin: 0;
+  padding: 0;
 `;
 
 export const Box = styled.div`

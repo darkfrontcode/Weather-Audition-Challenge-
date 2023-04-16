@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { COLORS, PERCENTAGE, SIZES } from '../../../../ui';
+import { PERCENTAGE } from '../../../../ui';
 
 /* =======================================
   - Structure
