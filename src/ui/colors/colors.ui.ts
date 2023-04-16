@@ -7,6 +7,7 @@ export const COLORS = {
     LIGHT_SLATE: '#798f9d',
     GEYSER: '#DFE6E9',
     CATSKILL: '#EAF1F5',
+    BOTTICELLI: '#D5E3EC',
   },
   RED: {
     ALIZARIN_CRIMSON: '#EB1F34',

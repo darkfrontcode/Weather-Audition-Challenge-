@@ -1,6 +1,17 @@
 import React from 'react';
 import { useApplicationContext } from '../../../../../application';
-import { Container, Grid, Heading, Period } from './display.style';
+import {
+  Box,
+  Card,
+  Container,
+  Day,
+  Grid,
+  Heading,
+  Period,
+  ShortDescription,
+  Temperature,
+  Unit,
+} from './display.style';
 
 export const Display = () => {
   const app = useApplicationContext();
@@ -13,10 +24,14 @@ export const Display = () => {
       <Grid>
         {app.weather.forecast.map((period) => (
           <Period key={period.name}>
-            <p>{period.name}</p>
-            <p>{period.temperature}</p>
-            <p>{period.temperatureUnit}</p>
-            <p>{period.shortForecast}</p>
+            <Card>
+              <Day>{period.name}</Day>
+              <Box>
+                <Temperature>{period.temperature}</Temperature>
+                <Unit>{period.temperatureUnit}</Unit>
+              </Box>
+              <ShortDescription>{period.shortForecast}</ShortDescription>
+            </Card>
           </Period>
         ))}
       </Grid>
