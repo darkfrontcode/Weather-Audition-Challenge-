@@ -4,16 +4,20 @@ import { Logo } from './components';
 import { Container, Navigation, Content } from './application.style';
 import { ApplicationProvider } from './contexts';
 
-export const Application = (): JSX.Element => (
-  <ApplicationProvider>
-    <Container>
-      <Navigation>
-        <Logo />
-        <AddressForm />
-      </Navigation>
-      <Content>
-        <WeatherChannel />
-      </Content>
-    </Container>
-  </ApplicationProvider>
-);
+export const Application = (): JSX.Element => {
+  const application = useApplication();
+
+  return (
+    <ApplicationProvider>
+      <Container>
+        <Navigation>
+          <Logo />
+          <AddressForm />
+        </Navigation>
+        <Content>
+          <WeatherChannel />
+        </Content>
+      </Container>
+    </ApplicationProvider>
+  );
+};

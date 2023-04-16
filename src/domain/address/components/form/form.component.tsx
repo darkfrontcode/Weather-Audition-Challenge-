@@ -1,5 +1,4 @@
 import React from 'react';
-import { useGeolocation } from '../../../geolocation';
 import {
   Container,
   Divider,
@@ -20,7 +19,6 @@ import { useForm } from './hooks';
 import { useFullAddress } from './hooks/full-address.hook';
 
 export const AddressForm = (): JSX.Element => {
-  const geolocation = useGeolocation();
   const fullAddress = useFullAddress();
   const form = useForm();
 
