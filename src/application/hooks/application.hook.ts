@@ -6,7 +6,7 @@ import { useApplicationContext } from './application-context.hook';
 export interface IApplicationOutput {
   request: {
     weather: {
-      byOneLineAddress: (address?: string) => Promise<void>;
+      byOneLineAddress: (address: string) => Promise<void>;
       byAddressFields: () => void;
     };
   };
@@ -19,9 +19,7 @@ export const useApplication = (): IApplicationOutput => {
   const application = useApplicationContext();
   const [forecast, setForecast] = useState<IPeriod[]>([]);
 
-  const byOneLineAddress = async (
-    address: string = '4600+silver+hill+rd%2C+20233'
-  ): Promise<void> => {
+  const byOneLineAddress = async (address: string): Promise<void> => {
     application.goToScene(Scenes.FETCHING);
 
     const geolocation = await GeolocationService.get.byOneLineAddress(address);
