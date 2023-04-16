@@ -25,29 +25,21 @@ export const useGeolocation = (): IGeolocationOutput => {
   const byOneLineAddress = async (
     address: string = '4600+silver+hill+rd%2C+20233'
   ): Promise<void> => {
-    try {
-      const response = await geolocationService.get.byOneLineAddress(address);
+    const response = await geolocationService.get.byOneLineAddress(address);
 
-      // TODO:
-      if (
-        response.status === 200 &&
-        response.data.result.addressMatches.length > 0
-      ) {
-        const { y, x } = response.data.result.addressMatches[0].coordinates;
+    if (response.ok) {
+      const { y, x } = response.data;
 
-        setCoordinates({
-          latitude: y,
-          longitude: x,
-          available: true,
-        });
+      setCoordinates({
+        latitude: y,
+        longitude: x,
+        available: true,
+      });
 
-        return;
-      }
-
-      throw new Error('No address matches');
-    } catch (err) {
-      setCoordinates(INITIAL_COORDINATES);
+      return;
     }
+
+    setCoordinates(INITIAL_COORDINATES);
   };
 
   // TODO:
