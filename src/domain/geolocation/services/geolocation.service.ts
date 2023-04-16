@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { ServiceResponse } from '../../shared/models';
-import { ICensusCoordinatesResponse, ICensusResponse } from '../interfaces';
+import { ICensusCoordinates, ICensusResponse } from '../interfaces';
 
 const http = axios.create({
   baseURL: 'https://geocoding.geo.census.gov/geocoder/geographies/',
@@ -9,7 +9,7 @@ const http = axios.create({
 
 const byOneLineAddress = async (
   address: string
-): Promise<ServiceResponse<ICensusCoordinatesResponse>> => {
+): Promise<ServiceResponse<ICensusCoordinates>> => {
   try {
     const response = await http.get<ICensusResponse>(
       `onelineaddress?address=${address}&benchmark=2020&vintage=2010&format=json`
