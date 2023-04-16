@@ -22,23 +22,19 @@ const byGridPoints = async (
       `gridpoints/${gridId}/${gridX},${gridY}/forecast`
     );
 
-    // TODO: Create interceptors to catch errors
-    if (
-      response.status === 200 &&
-      response.data.properties.periods.length > 0
-    ) {
+    const statusCode = response.status === 200;
+    const hasPeriods = response.data.properties.periods.length > 0;
+
+    if (statusCode && hasPeriods) {
       return ServiceResponse<IPeriod[]>({
         ok: true,
         data: response.data.properties.periods,
       });
     }
 
-    throw new Error('Something went wrong!');
+    return ServiceResponse<null>({ ok: true, data: null });
   } catch (err) {
-    return ServiceResponse<null>({
-      ok: false,
-      data: null,
-    });
+    return ServiceResponse<null>({ ok: false, data: null });
   }
 };
 
@@ -51,9 +47,11 @@ const byPoints = async (
       `points/${latitude},${longitude}`
     );
 
-    // TODO: Create interceptors to catch errors
-    if (response.status === 200 && response.data.properties) {
-      const { gridId, gridX, gridY } = response.data.properties;
+    const statusCode = response.status === 200 || response.status === 301;
+    const properties = response.data.properties;
+
+    if (statusCode && properties) {
+      const { gridId, gridX, gridY } = properties;
 
       return ServiceResponse<IForecastGrid>({
         ok: true,
@@ -61,12 +59,9 @@ const byPoints = async (
       });
     }
 
-    throw new Error('Something went wrong!');
+    return ServiceResponse<null>({ ok: true, data: null });
   } catch (err) {
-    return ServiceResponse<null>({
-      ok: false,
-      data: null,
-    });
+    return ServiceResponse<null>({ ok: false, data: null });
   }
 };
 

@@ -15,23 +15,19 @@ const byOneLineAddress = async (
       `onelineaddress?address=${address}&benchmark=2020&vintage=2010&format=json`
     );
 
-    // TODO: Create interceptors to catch errors
-    if (
-      response.status === 200 &&
-      response.data.result.addressMatches.length > 0
-    ) {
+    const statusCode = response.status === 200;
+    const hasAddressMatches = response.data.result.addressMatches.length > 0;
+
+    if (statusCode && hasAddressMatches) {
       return ServiceResponse({
         ok: true,
         data: response.data.result.addressMatches[0].coordinates,
       });
     }
 
-    throw new Error('No address matches');
+    return ServiceResponse<null>({ ok: true, data: null });
   } catch (err) {
-    return ServiceResponse<null>({
-      ok: false,
-      data: null,
-    });
+    return ServiceResponse<null>({ ok: false, data: null });
   }
 };
 
