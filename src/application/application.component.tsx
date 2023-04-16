@@ -1,14 +1,14 @@
 import React from 'react';
 import { AddressForm } from '../domain';
 import { Logo } from './components';
-import { Application, Navigation, Content } from './layout.style';
+import { Container, Navigation, Content } from './application.style';
 
-export const Layout = (): JSX.Element => (
-  <Application>
+export const Application = (): JSX.Element => (
+  <Container>
     <Navigation>
       <Logo />
       <AddressForm />
     </Navigation>
     <Content>Content</Content>
-  </Application>
+  </Container>
 );

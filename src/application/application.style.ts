@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { COLORS } from '../ui';
 
-export const Application = styled.div`
+export const Container = styled.div`
   display: flex;
   flex-grow: 1;
 `;

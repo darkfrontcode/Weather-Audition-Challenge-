@@ -31,7 +31,7 @@ export const AddressForm = (): JSX.Element => {
       </p>
       <Form
         autoComplete="off"
-        onSubmit={async (event) => {
+        onSubmit={(event) => {
           // TODO:
           event.preventDefault();
           geolocation.get.byOneLineAddress();
