@@ -28,6 +28,10 @@ export const useApplication = (): IApplicationOutput => {
       return application.goToScene(Scenes.ERROR);
     }
 
+    if (!geolocation.data) {
+      return application.goToScene(Scenes.NOT_FOUND);
+    }
+
     const { y, x } = geolocation.data;
     const points = await WeatherService.get.byPoints(y, x);
 
@@ -43,6 +47,8 @@ export const useApplication = (): IApplicationOutput => {
     }
 
     setForecast(grid);
+
+    return application.goToScene(Scenes.DISPLAY);
   };
 
   // TODO:
