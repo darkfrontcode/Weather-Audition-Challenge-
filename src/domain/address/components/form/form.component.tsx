@@ -1,5 +1,5 @@
 import React, { SyntheticEvent, useState } from 'react';
-import { SimpleButton } from '../../../../ui';
+import { useGeolocation } from '../../../geolocation';
 import {
   Container,
   Divider,
@@ -20,7 +20,7 @@ import { useForm } from './hooks';
 import { useFullAddress } from './hooks/full-address.hook';
 
 export const AddressForm = (): JSX.Element => {
-  // TODO: Fix this
+  const geolocation = useGeolocation();
   const fullAddress = useFullAddress();
   const form = useForm();
 
@@ -31,6 +31,7 @@ export const AddressForm = (): JSX.Element => {
         onSubmit={(event) => {
           // TODO:
           event.preventDefault();
+          geolocation.get.byOneLineAddress();
           console.log('Sent!');
         }}
       >
