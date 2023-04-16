@@ -1,4 +1,5 @@
 import React from 'react';
+import { IAddress } from '../../interfaces';
 import {
   Container,
   Divider,
@@ -18,21 +19,33 @@ import {
 import { useForm } from './hooks';
 import { useFullAddress } from './hooks/full-address.hook';
 
-export const AddressForm = (): JSX.Element => {
+export interface IAddressFormProps {
+  submit: {
+    byOneLineAddress: (address: string) => void;
+    byAddressFields: (address: IAddress) => void;
+  };
+}
+
+export const AddressForm = ({ submit }: IAddressFormProps): JSX.Element => {
   const fullAddress = useFullAddress();
   const form = useForm();
 
+  const submitByOneLineAddress = (
+    event: React.FormEvent<HTMLFormElement>
+  ): void => {
+    event.preventDefault();
+    submit.byOneLineAddress(fullAddress.state);
+  };
+
+  const byAddressFields = (event: React.FormEvent<HTMLFormElement>): void => {
+    event.preventDefault();
+    submit.byAddressFields(form.state);
+  };
+
   return (
     <Container>
-      <Form
-        autoComplete="off"
-        onSubmit={(event) => {
-          // TODO:
-          event.preventDefault();
-          geolocation.get.byOneLineAddress();
-        }}
-      >
-        <Heading>Type a full address:</Heading>
+      <Heading>Type a full address:</Heading>
+      <Form autoComplete="off" onSubmit={submitByOneLineAddress}>
         <FullAddressSearchInput
           input={{
             'data-testid': 'FULL_ADDRESS',
@@ -49,11 +62,13 @@ export const AddressForm = (): JSX.Element => {
             disabled: fullAddress.tools.invalid,
           }}
         />
-        <Divider>
-          <HorizontalLine />
-          <Or>or</Or>
-        </Divider>
-        <Heading>Part of it..</Heading>
+      </Form>
+      <Divider>
+        <HorizontalLine />
+        <Or>or</Or>
+      </Divider>
+      <Heading>Part of it..</Heading>
+      <Form autoComplete="off" onSubmit={byAddressFields}>
         <Grid>
           <StreetInput
             data-testid="STREET"
