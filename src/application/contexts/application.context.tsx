@@ -1,5 +1,10 @@
 import React, { createContext, ReactChildren, ReactChild } from 'react';
-import { IWeatherOutput, useWeather, useAddress } from '../../domain';
+import {
+  IWeatherOutput,
+  useWeather,
+  useAddress,
+  IAddressOutput,
+} from '../../domain';
 import { ITimelineOutput, useTimeline } from '../hooks';
 
 export interface IApplicationContext extends ITimelineOutput {
@@ -18,8 +23,10 @@ export const ApplicationProvider = ({ children }: IApplicationContextProps) => {
   const weather = useWeather();
   const address = useAddress();
 
+  const value = { timeline, controls, weather, address };
+
   return (
-    <ApplicationContext.Provider value={{ timeline, controls, weather }}>
+    <ApplicationContext.Provider value={value}>
       {children}
     </ApplicationContext.Provider>
   );
