@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Heading, Disappointed, Box } from './error.style';
+import { Container, Heading, Disappointed, Box, Retry } from './error.style';
 
 export const Error = () => {
   return (
@@ -11,6 +11,10 @@ export const Error = () => {
           <br />
           <span>to good people</span>
         </Heading>
+        <Retry>
+          <span>Can you please try again?</span>
+          <span>🔄</span>
+        </Retry>
       </Box>
     </Container>
   );

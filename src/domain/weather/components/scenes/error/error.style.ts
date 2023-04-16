@@ -21,8 +21,14 @@ export const Heading = styled.h2`
   color: ${COLORS.BLUE.RICH};
   text-align: center;
   line-height: 80px;
-  margin: 0;
+  margin: 0 0 ${SIZES.EXTRA_LARGE}px 0;
   padding: 0;
+`;
+
+export const Retry = styled.p`
+  font-family: ${FONTS.DONGLE}, cursive;
+  font-size: ${SIZES.LARGE * 2}px;
+  color: ${COLORS.BLUE.RICH};
 `;
 
 export const Box = styled.div`
