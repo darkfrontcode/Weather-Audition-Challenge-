@@ -1,8 +1,10 @@
 import React, { createContext, ReactChildren, ReactChild } from 'react';
 
-import { useMovie } from '../hooks';
+import { IMovieiOutput, useMovie } from '../hooks';
 
-export interface IApplicationContext {}
+export interface IApplicationContext {
+  movie?: IMovieiOutput;
+}
 
 export interface IApplicationContextProps {
   children: ReactChild | ReactChildren;
@@ -14,7 +16,7 @@ export const ApplicationProvider = ({ children }: IApplicationContextProps) => {
   const movie = useMovie();
 
   return (
-    <ApplicationContext.Provider value={{}}>
+    <ApplicationContext.Provider value={{ movie }}>
       {children}
     </ApplicationContext.Provider>
   );

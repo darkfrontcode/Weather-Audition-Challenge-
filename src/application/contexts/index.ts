@@ -1,1 +1,1 @@
-export { ApplicationProvider } from './application.context';
+export { ApplicationProvider, ApplicationContext } from './application.context';

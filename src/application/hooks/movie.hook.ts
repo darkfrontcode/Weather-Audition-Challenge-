@@ -9,7 +9,18 @@ const PLAY_MOVIE: IMovie = {
   },
 };
 
-export const useMovie = () => {
-  const [state, dispatch] = useReducer(MovieReducer, PLAY_MOVIE);
-  return { state, dispatch };
+export interface IMovieiOutput {
+  movie: {
+    scene: {
+      current: Scenes;
+    };
+  };
+  goToScene: (scene: Scenes) => void;
+}
+
+export const useMovie = (): IMovieiOutput => {
+  const [movie, dispatch] = useReducer(MovieReducer, PLAY_MOVIE);
+  const goToScene = (scene: Scenes) => dispatch({ type: scene, payload: null });
+
+  return { movie, goToScene };
 };
