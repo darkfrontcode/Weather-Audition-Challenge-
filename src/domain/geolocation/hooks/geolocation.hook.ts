@@ -1,35 +1,12 @@
-import axios from 'axios';
 import { useState } from 'react';
 import { ICoordinates } from '../interfaces';
-
-// https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=4600+silver+hill+rd%2C+20233&benchmark=2020&vintage=2010&format=json
-
-// TODO:
-// MOVE:
-// CREATE INTERCEPTORS FOR ERRORS
-
-const http = axios.create({
-  baseURL: 'https://geocoding.geo.census.gov/geocoder/geographies/',
-  headers: { 'Access-Control-Allow-Origin': '*' },
-});
+import { geolocationService } from '../services';
 
 const INITIAL_COORDINATES = {
   latitude: 0,
   longitude: 0,
   available: false,
 };
-
-// TODO:
-export interface ICensusResponse {
-  result: {
-    addressMatches: {
-      coordinates: {
-        x: number;
-        y: number;
-      };
-    }[];
-  };
-}
 
 export interface IGeolocationOutput {
   get: {
@@ -49,9 +26,7 @@ export const useGeolocation = (): IGeolocationOutput => {
     address: string = '4600+silver+hill+rd%2C+20233'
   ): Promise<void> => {
     try {
-      const response = await http.get<ICensusResponse>(
-        `onelineaddress?address=${address}&benchmark=2020&vintage=2010&format=json`
-      );
+      const response = await geolocationService.get.byOneLineAddress(address);
 
       // TODO:
       if (
