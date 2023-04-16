@@ -26,7 +26,7 @@ const fontStyle = css`
 export const Container = styled.section``;
 
 export const Form = styled.form`
-  padding: 0 ${SIZES.LARGE}px;
+  padding: 0 ${SIZES.LARGE + SIZES.MEDIUM}px;
   box-sizing: border-box;
 `;
 
