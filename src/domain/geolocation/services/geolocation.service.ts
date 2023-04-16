@@ -1,8 +1,7 @@
 import axios from 'axios';
-import { response } from '../../shared/models';
+import { ServiceResponse } from '../../shared/models';
 import { ICensusCoordinatesResponse, ICensusResponse } from '../interfaces';
 
-// TODO: CREATE INTERCEPTORS FOR ERRORS
 const http = axios.create({
   baseURL: 'https://geocoding.geo.census.gov/geocoder/geographies/',
   headers: { 'Access-Control-Allow-Origin': '*' },
@@ -10,7 +9,7 @@ const http = axios.create({
 
 const byOneLineAddress = async (
   address: string
-): Promise<response<ICensusCoordinatesResponse>> => {
+): Promise<ServiceResponse<ICensusCoordinatesResponse>> => {
   try {
     const response = await http.get<ICensusResponse>(
       `onelineaddress?address=${address}&benchmark=2020&vintage=2010&format=json`
@@ -24,7 +23,9 @@ const byOneLineAddress = async (
       const ok = true;
       const data = response.data.result.addressMatches[0].coordinates;
 
-      return response({ ok, data });
+      console.log(data);
+
+      return ServiceResponse({ ok, data });
     }
 
     throw new Error('No address matches');
@@ -32,7 +33,7 @@ const byOneLineAddress = async (
     const ok = false;
     const data = null;
 
-    return response({ ok, data });
+    return ServiceResponse({ ok, data });
   }
 };
 

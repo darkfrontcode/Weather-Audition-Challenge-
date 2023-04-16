@@ -1,1 +1,1 @@
-export { response } from './response.model';
+export { ServiceResponse } from './service-response.model';
