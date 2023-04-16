@@ -1,10 +1,10 @@
 import React from 'react';
-import { Scenes, useApplication } from '../../../../application';
+import { Scenes, useApplicationContext } from '../../../../application';
 import { Greetings, Fetching, Error } from '../scenes';
 import { Container } from './channel.style';
 
 export const WeatherChannel = () => {
-  const { movie } = useApplication();
+  const { movie } = useApplicationContext();
 
   const timeline = {
     [Scenes.GREETINGS]: () => <Greetings />,

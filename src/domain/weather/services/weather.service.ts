@@ -7,18 +7,6 @@ import {
   IWeatherGridPointsResponse,
 } from '../interfaces';
 
-/*
-
-  https://api.weather.gov/points/39.7456,-97.0892 -> properties -> {
-    "gridId": "TOP",
-    "gridX": 32,
-    "gridY": 81,
-  }
-
-  https://api.weather.gov/gridpoints/TOP/32,81/forecast -> properties -> periods -> []
-
-*/
-
 const http = axios.create({
   baseURL: 'https://api.weather.gov/',
   headers: { 'Access-Control-Allow-Origin': '*' },
@@ -35,7 +23,10 @@ const byGridPoints = async (
     );
 
     // TODO: Create interceptors to catch errors
-    if (response.status === 200 && response.data.properties.periods > 0) {
+    if (
+      response.status === 200 &&
+      response.data.properties.periods.length > 0
+    ) {
       return ServiceResponse<IPeriod[]>({
         ok: true,
         data: response.data.properties.periods,

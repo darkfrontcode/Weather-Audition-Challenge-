@@ -1,1 +1,1 @@
-export { geolocationService } from './geolocation.service';
+export { GeolocationService } from './geolocation.service';

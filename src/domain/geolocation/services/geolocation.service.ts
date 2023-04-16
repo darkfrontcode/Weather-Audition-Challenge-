@@ -42,6 +42,6 @@ const get = {
   byAddressFields,
 };
 
-export const geolocationService = {
+export const GeolocationService = {
   get,
 };
