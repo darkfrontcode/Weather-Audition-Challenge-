@@ -40,7 +40,7 @@ const byAddressFields = async (
 
   try {
     const response = await http.get<ICensusResponse>(
-      `address?${parameters}&benchmark=Public_AR_Census2020&format=json`
+      `address?${parameters}&benchmark=2020&vintage=2010&format=json`
     );
 
     const statusCode = response.status === 200;

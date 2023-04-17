@@ -69,8 +69,8 @@ export const Heading = styled.h3`
 export const Grid = styled.section`
   display: grid;
   grid-template:
-    'street street street street street street number'
-    'city city city city state state state'
+    'number number number street street street street'
+    'city city city city city state state'
     'zipcode 1fr 1fr 1fr 1fr 1fr 1fr';
   grid-gap: ${SIZES.LARGE}px;
   margin: ${SIZES.LARGE}px 0;

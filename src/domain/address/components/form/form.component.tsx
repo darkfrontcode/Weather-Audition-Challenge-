@@ -70,15 +70,6 @@ export const AddressForm = ({ submit }: IAddressFormProps): JSX.Element => {
       <Heading>Part of it..</Heading>
       <Form autoComplete="off" onSubmit={byAddressFields}>
         <Grid>
-          <StreetInput
-            data-testid="STREET"
-            id="street"
-            type="text"
-            name="street"
-            placeholder="Street"
-            value={form.state.street}
-            onChange={form.tools.change}
-          />
           <NumberInput
             data-testid="NUMBER"
             id="number"
@@ -86,6 +77,15 @@ export const AddressForm = ({ submit }: IAddressFormProps): JSX.Element => {
             name="number"
             placeholder="Number"
             value={form.state.number}
+            onChange={form.tools.change}
+          />
+          <StreetInput
+            data-testid="STREET"
+            id="street"
+            type="text"
+            name="street"
+            placeholder="Street"
+            value={form.state.street}
             onChange={form.tools.change}
           />
           <CityInput
