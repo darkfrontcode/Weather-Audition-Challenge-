@@ -1,14 +1,5 @@
 import { object, string, number, InferType } from 'yup';
 
-/*
-
-first_name: yup.string().when(['surname', 'age'], {
-    is: (surname, age) => !surname && !age,
-    then: yup.string().required()
-  })
-
-*/
-
 export const AddressSchema = object().shape(
   {
     street: string().required(),
