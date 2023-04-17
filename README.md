@@ -24,6 +24,10 @@ Stackblitz:
 
 On Stackblitz panel, after all npm tasks finished, go to "Open in New Tab" option on "top-right" corner of the screen to run application in a fully dedicated screen unplugged from editor.
 
+<p align="center">
+	<img src="https://github.com/darkfrontcode/Weather-Audition-Challenge-/blob/main/screenshots/unplugged.png">
+</p>
+
 Package Scripts:
 
 - start: Run all unit testing and start vite server in dev mode.
