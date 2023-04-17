@@ -11,21 +11,29 @@ import {
   ShortDescription,
   Temperature,
   Unit,
+  Image,
+  Source,
+  Name,
+  Address,
 } from './display.style';
 
 export const Display = () => {
   const app = useApplicationContext();
 
-  console.log(app.weather.forecast);
-
   return (
     <Container>
-      <Heading>{app.address.oneline.state}</Heading>
+      <Heading>Weather Forecast</Heading>
+      <Address>{app.address.oneline.state}</Address>
       <Grid>
         {app.weather.forecast.map((period) => (
           <Period key={period.name}>
             <Card>
-              <Day>{period.name}</Day>
+              <Day>
+                <Name>{period.name}</Name>
+              </Day>
+              <Image>
+                <Source src={period.icon} />
+              </Image>
               <Box>
                 <Temperature>{period.temperature}</Temperature>
                 <Unit>{period.temperatureUnit}</Unit>

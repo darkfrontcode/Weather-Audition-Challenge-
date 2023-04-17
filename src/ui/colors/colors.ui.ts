@@ -8,6 +8,7 @@ export const COLORS = {
     GEYSER: '#DFE6E9',
     CATSKILL: '#EAF1F5',
     BOTTICELLI: '#D5E3EC',
+    REGENT: '#7e939f',
   },
   RED: {
     ALIZARIN_CRIMSON: '#EB1F34',
