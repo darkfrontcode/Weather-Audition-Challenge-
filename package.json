@@ -2,7 +2,7 @@
   "name": "vite-project",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite --cors=false",
+    "start": "jest && vite --cors=false",
     "tsc": "tsc",
     "test": "jest --watchAll"
   },

@@ -18,7 +18,7 @@
 
 ### Troubleshooting
 
-If you are experiencing any problems related to CORS on running this app it would be probably due to vite-server and stackblitz cross-origin issues.
+If you are facing for problems related to CORS on running this app it would be probably due to vite-server and stackblitz cross-origin issues.
 
 Follows below a simple documentation about it that explains how you can solve this problem temporarily.
 
