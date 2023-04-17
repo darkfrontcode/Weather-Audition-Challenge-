@@ -1,4 +1,4 @@
-import { GeolocationService, WeatherService } from '../../domain';
+import { GeolocationService, IAddress, WeatherService } from '../../domain';
 import { Scene } from '../enums';
 import { useApplicationContext } from './application-context.hook';
 
@@ -47,8 +47,11 @@ export const useApplication = (): IApplicationOutput => {
     return app.controls.go(Scene.DISPLAY);
   };
 
-  // TODO:
-  const byAddressFields = () => {};
+  const byAddressFields = (address: IAddress) => {
+    app.controls.go(Scene.FETCHING);
+
+    const geolocation = await GeolocationService.get.byOneLineAddress(address);
+  };
 
   return {
     request: {
