@@ -1,6 +1,6 @@
 # Weather ( Audition/Challenge )
 
-[Code ( Stackblitz )](https://stackblitz.com/edit/vite-pt41rt?file=src/application/application.component.tsx)
+[Live Code & Running ( Stackblitz )](https://stackblitz.com/edit/vite-pt41rt?file=src/application/application.component.tsx)
 
 ### Screenshots
 
