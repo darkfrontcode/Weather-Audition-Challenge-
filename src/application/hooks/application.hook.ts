@@ -1,4 +1,9 @@
-import { GeolocationService, IAddress, WeatherService } from '../../domain';
+import {
+  AddressFactory,
+  GeolocationService,
+  IAddress,
+  WeatherService,
+} from '../../domain';
 import { Scene } from '../enums';
 import { useApplicationContext } from './application-context.hook';
 
@@ -74,7 +79,9 @@ export const useApplication = (): IApplicationOutput => {
       return app.controls.go(Scene.ERROR);
     }
 
-    app.address.oneline.change(address);
+    const onelineAddress = AddressFactory.joinFromFields(address);
+
+    app.address.oneline.change(onelineAddress);
     app.weather.change(grid.data);
 
     return app.controls.go(Scene.DISPLAY);
