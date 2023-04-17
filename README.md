@@ -20,7 +20,7 @@ If you were experience some problems related to CORS on running this app it woul
 
 Follows below a simple documentation about it that explains how you can solve this problem temporarily.
 
-[what-is-cors](https://simplelocalize.io/blog/posts/what-is-cors/)
+[What is CORS? ( DOC )](https://simplelocalize.io/blog/posts/what-is-cors/)
 
 The easiest way though is to open a new chrome instance with CORS disabled as follows:
 
