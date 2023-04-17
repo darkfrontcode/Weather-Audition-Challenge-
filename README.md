@@ -24,7 +24,7 @@ Stackblitz:
 
 [Live Code & Running ( Stackblitz )](https://stackblitz.com/edit/vite-pt41rt?file=src/application/application.component.tsx)
 
-On Stackblitz panel, after all npm tasks finished, go to "Open in New Tab" option on "top-right" corner of the screen to run application in a fully dedicated screen unplugged from editor.
+On the Stackblitz panel, after all npm tasks are finished, go to the "Open in New Tab" option on the "top-right" corner of the screen to run the application in a fully dedicated screen unplugged from the editor.
 
 <p align="center">
 	<img src="https://github.com/darkfrontcode/Weather-Audition-Challenge-/blob/main/screenshots/unplugged.png">
@@ -37,9 +37,9 @@ Package Scripts:
 
 ### Troubleshooting
 
-If you are facing for problems related to CORS on running this app it would be probably due to vite-server and stackblitz cross-origin issues.
+If you are facing problems related to CORS on running this app it would be probably due to vite-server and stackblitz cross-origin issues.
 
-Follows below a simple documentation about it that explains how you can solve this problem temporarily.
+Below is a simple documentation about it that explains how you can solve this problem temporarily.
 
 [What is CORS? ( DOC )](https://simplelocalize.io/blog/posts/what-is-cors/)
 
